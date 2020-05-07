@@ -33,6 +33,7 @@ class App extends Component {
     return (
       <div>
           <Nav/>
+          <h1>Hello</h1>
           <div className="container">
             <div className="row">
               <NoteForm addData={(item) => addData(item)} />

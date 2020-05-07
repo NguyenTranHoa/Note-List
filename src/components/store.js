@@ -3,7 +3,9 @@ import {noteData} from './firebaseConnect'
 let redux = require('redux');
 const noteInitialState = {
     isEdit: false,
-    editItem: {}
+    editItem: {},
+    alertShow: false,
+    alertContent: ''
 }
 const allReducer = (state = noteInitialState, action) => {
     switch (action.type) {
@@ -23,6 +25,10 @@ const allReducer = (state = noteInitialState, action) => {
         case 'delete_data':
             noteData.child(action.id).remove();
             return state
+        case 'alert_on':
+            return {...state, alertShow: true, alertContent: action.alertContent}
+        case 'alert_off':
+            return {...state, alertShow: false}
         default:
             return state
     }

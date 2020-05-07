@@ -6,6 +6,7 @@ import NoteForm from './components/NoteForm';
 import {noteData} from './components/firebaseConnect'
 import {connect} from 'react-redux'
 import EditNote from './components/EditNote';
+import AlertInfo from './components/AlertInfo';
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class App extends Component {
     return (
       <div>
           <Nav/>
-          <h1>Hello</h1>
+          <AlertInfo/>
           <div className="container">
             <div className="row">
               <NoteForm addData={(item) => addData(item)} />

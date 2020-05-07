@@ -35,6 +35,7 @@ class EditNote extends Component {
         editObj.content = this.state.content;
         this.props.saveEditData(editObj);
         this.props.changeEditStatus();
+        this.props.alertOn('Edit complete   !');
     }
 
     handleKeyPress = (event) => {
@@ -89,6 +90,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         changeEditStatus: () => {
             dispatch({type: 'change_edit_status'})
+        },
+        alertOn: (alertContent) => {
+            dispatch({type: 'alert_on', alertContent})
         }
     }
 }

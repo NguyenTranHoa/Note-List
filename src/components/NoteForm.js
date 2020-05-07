@@ -51,7 +51,7 @@ class NoteForm extends Component {
                         <h3>Add</h3>
                         <div className="form-group">
                             <label htmlFor="noteTitle">Title</label>
-                            <input type="text" name="noteTitle" id="noteTitle" className="form-control" placeholder="Insert" aria-describedby="helpIdNoteTitpe"
+                            <input type="text" name="noteTitle" id="noteTitle" className="form-control" placeholder="Insert here" aria-describedby="helpIdNoteTitpe"
                             onChange={(event) => this.isChange(event)} 
                             onKeyPress = {(event) => handleKeyPress(event)}
                           
@@ -60,13 +60,13 @@ class NoteForm extends Component {
                         </div>
                         <div className="form-group">
                             <label htmlFor="noteContent">Content</label>
-                            <input type="text" name="noteContent" id="noteContent" className="form-control" placeholder="Insert Content" aria-describedby="helpIdNotecontent" 
+                            <input type="text" name="noteContent" id="noteContent" className="form-control" placeholder="Insert here" aria-describedby="helpIdNotecontent" 
                             onChange={(event) => this.isChange(event)} 
                             onKeyPress = {(event) => handleKeyPress(event)}/>
                             <small id="helpIdNotecontent" className="text-muted">Dien noi dung vao day</small>
                         </div>
                         <button type="reset" className="btn btn-primary btn-block"
-                            onClick={() => {addData(noteTitle, noteContent); resetState()}} 
+                            onClick={() => {addData(noteTitle, noteContent); resetState(); this.props.alertOn('Save complete   !')}}
                             ref = {this.buttonRef}
                         >Save</button>
                     </form>
@@ -77,7 +77,7 @@ class NoteForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        test: state.testConnect
+        alertContent: state.alertContent
     }
 }
 
@@ -85,6 +85,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         addData: (getItem) => {
             dispatch({type: 'addData', getItem})
+        },
+        alertOn: (alertContent) => {
+            dispatch({type: 'alert_on', alertContent})
         }
     }
 }
